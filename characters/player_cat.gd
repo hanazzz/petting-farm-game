@@ -1,6 +1,12 @@
 extends CharacterBody2D
 
 @export var move_speed : float = 100
+@export var starting_direction = Vector2(0, 1)
+
+@onready var animation_tree = $AnimationTree
+
+func _ready():
+	animation_tree.set("parameters/Idle/blend_position", starting_direction)
 
 func _physics_process(delta: float) -> void:
 	# Get input direction
