@@ -8,7 +8,7 @@ extends CharacterBody2D
 
 func _ready():
 	# Set player's initial direction
-	update_animation_paramters(starting_direction)
+	update_animation_parameters(starting_direction)
 
 func _physics_process(delta: float) -> void:
 	# Get input direction
@@ -19,7 +19,7 @@ func _physics_process(delta: float) -> void:
 	# TODO: Replace above with Input.get_vector()? Look into documentation.
 	
 	# Update animation
-	update_animation_paramters(input_direction)
+	update_animation_parameters(input_direction)
 	
 	#Update velocity
 	velocity = input_direction * move_speed
@@ -29,7 +29,7 @@ func _physics_process(delta: float) -> void:
 	pick_new_state()
 
 
-func update_animation_paramters(move_input : Vector2):
+func update_animation_parameters(move_input : Vector2):
 	# Don't update animation if there is no input
 	if (move_input != Vector2.ZERO):
 		animation_tree.set("parameters/Walk/blend_position", move_input)
