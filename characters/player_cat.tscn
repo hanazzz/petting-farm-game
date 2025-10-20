@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://cw6ufko8xkibr" path="res://assets/characters/Basic Charakter Spritesheet.png" id="1_o7la7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o7la7"]
-size = Vector2(10, 6)
+size = Vector2(8, 6)
 
 [sub_resource type="Animation" id="Animation_phn6q"]
 length = 0.001
@@ -246,3 +246,7 @@ tree_root = SubResource("AnimationNodeStateMachine_gh61h")
 anim_player = NodePath("../AnimationPlayer")
 parameters/Idle/blend_position = Vector2(-0.33744854, 0.18251121)
 parameters/Walk/blend_position = Vector2(-0.32716048, -0.054260135)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+process_callback = 0
+position_smoothing_enabled = true
