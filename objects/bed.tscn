@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://cxl6irm8nddki"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_1jb2r"]
+load_path = "res://.godot/imported/Basic_Furniture.png-c00bc96b2fafdf4501c11d589816afd1.ctex"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ld6i3"]
+size = Vector2(14, 17)
+
+[node name="Chest" type="Sprite2D"]
+texture = SubResource("CompressedTexture2D_1jb2r")
+region_enabled = true
+region_rect = Rect2(0, 24, 16, 24)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, 3.5)
+shape = SubResource("RectangleShape2D_ld6i3")
