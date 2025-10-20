@@ -6,7 +6,7 @@ load_path = "res://.godot/imported/Basic_Furniture.png-c00bc96b2fafdf4501c11d589
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ld6i3"]
 size = Vector2(14, 17)
 
-[node name="Chest" type="Sprite2D"]
+[node name="Bed" type="Sprite2D"]
 texture = SubResource("CompressedTexture2D_1jb2r")
 region_enabled = true
 region_rect = Rect2(0, 24, 16, 24)
