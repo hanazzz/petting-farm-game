@@ -1,0 +1,52 @@
+[gd_scene load_steps=5 format=3 uid="uid://g6udn3jvc88m"]
+
+[ext_resource type="Texture2D" uid="uid://cj4nqtc83pa2c" path="res://assets/objects/heart.png" id="1_krj6w"]
+
+[sub_resource type="Animation" id="Animation_mpj2w"]
+resource_name = "bobbing"
+length = 3.0
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.36666667, 0.73333335, 1.1333333, 1.5333333, 1.9, 2.3, 2.6666667, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2(0, 0), Vector2(0, -1), Vector2(0, -2), Vector2(0, -1), Vector2(0, 0), Vector2(0, -1), Vector2(0, -2), Vector2(0, -1), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_ipgsx"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_si1bd"]
+_data = {
+&"RESET": SubResource("Animation_ipgsx"),
+&"bobbing": SubResource("Animation_mpj2w")
+}
+
+[node name="Heart" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_krj6w")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_si1bd")
+}
+autoplay = "bobbing"
