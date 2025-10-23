@@ -227,6 +227,7 @@ parameters/Walk/blend_position = Vector2(0.6646091, -0.616592)
 
 [node name="Heart" parent="." instance=ExtResource("3_t8fki")]
 visible = false
+position = Vector2(0, -12)
 
 [node name="Interactable" parent="." instance=ExtResource("4_t8qks")]
 position = Vector2(0, 4)
