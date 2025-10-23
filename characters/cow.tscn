@@ -1,7 +1,9 @@
-[gd_scene load_steps=34 format=3 uid="uid://c223atvlg6ry6"]
+[gd_scene load_steps=37 format=3 uid="uid://c223atvlg6ry6"]
 
 [ext_resource type="Script" uid="uid://bsmbr4hv5luna" path="res://characters/cow.gd" id="1_5wucx"]
 [ext_resource type="Texture2D" uid="uid://dnplvk7j6pm8e" path="res://assets/characters/Free Cow Sprites.png" id="1_kfm0s"]
+[ext_resource type="PackedScene" uid="uid://g6udn3jvc88m" path="res://objects/heart.tscn" id="3_t8fki"]
+[ext_resource type="PackedScene" uid="uid://cnrchsycnop0p" path="res://interactions/interactable.tscn" id="4_t8qks"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5wucx"]
 size = Vector2(16, 12)
@@ -194,6 +196,9 @@ states/Walk/node = SubResource("AnimationNodeBlendSpace2D_t8fki")
 states/Walk/position = Vector2(519, 189)
 transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_kfm0s"), "Idle", "Blink", SubResource("AnimationNodeStateMachineTransition_5wucx"), "Blink", "Idle", SubResource("AnimationNodeStateMachineTransition_t8fki"), "Idle", "Walk", SubResource("AnimationNodeStateMachineTransition_t8qks"), "Walk", "Idle", SubResource("AnimationNodeStateMachineTransition_unut8")]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_unut8"]
+radius = 9.877276
+
 [node name="Cow" type="CharacterBody2D"]
 script = ExtResource("1_5wucx")
 
@@ -219,5 +224,18 @@ parameters/Idle/blend_position = Vector2(0.0020576715, 0.11345291)
 parameters/Walk/blend_position = Vector2(0.6646091, -0.616592)
 
 [node name="Timer" type="Timer" parent="."]
+
+[node name="Heart" parent="." instance=ExtResource("3_t8fki")]
+visible = false
+position = Vector2(0, -12)
+
+[node name="Interactable" parent="." instance=ExtResource("4_t8qks")]
+interact_name = "Pet cow"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable"]
+position = Vector2(0, 4)
+scale = Vector2(2.064581, 1.0371144)
+shape = SubResource("CircleShape2D_unut8")
+debug_color = Color(0.36078432, 0.6156863, 0.19607843, 0.3137255)
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -1,7 +1,8 @@
-[gd_scene load_steps=28 format=3 uid="uid://b8tth873cnky5"]
+[gd_scene load_steps=29 format=3 uid="uid://b8tth873cnky5"]
 
 [ext_resource type="Script" uid="uid://cpikgxg0nns80" path="res://characters/player_cat.gd" id="1_4x382"]
 [ext_resource type="Texture2D" uid="uid://cw6ufko8xkibr" path="res://assets/characters/Basic Charakter Spritesheet.png" id="1_o7la7"]
+[ext_resource type="PackedScene" uid="uid://dt5uqipxt705x" path="res://interactions/interacting_component.tscn" id="2_phn6q"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o7la7"]
 size = Vector2(8, 6)
@@ -224,6 +225,8 @@ transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition
 
 [node name="PlayerCat" type="CharacterBody2D"]
 script = ExtResource("1_4x382")
+
+[node name="InteractingComponent" parent="." instance=ExtResource("2_phn6q")]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
