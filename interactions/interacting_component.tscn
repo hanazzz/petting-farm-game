@@ -17,7 +17,7 @@ collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractRange"]
-scale = Vector2(1.306346, 1.306346)
+scale = Vector2(1.1687372, 1.1687372)
 shape = SubResource("CircleShape2D_sil8h")
 debug_color = Color(0.36078432, 0.6156863, 0.19607843, 0.3137255)
 
