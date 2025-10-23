@@ -1,10 +1,14 @@
-[gd_scene load_steps=6 format=4 uid="uid://0xspdiqn7cxi"]
+[gd_scene load_steps=9 format=4 uid="uid://0xspdiqn7cxi"]
 
 [ext_resource type="PackedScene" uid="uid://b8tth873cnky5" path="res://characters/player_cat.tscn" id="1_qc6i3"]
 [ext_resource type="TileSet" uid="uid://c67gi3et33klt" path="res://assets/tilesets/tilesets.tres" id="2_d65c1"]
 [ext_resource type="PackedScene" uid="uid://c223atvlg6ry6" path="res://characters/cow.tscn" id="3_d65c1"]
+[ext_resource type="Script" uid="uid://di03sy5ekr7ib" path="res://levels/house_door.gd" id="3_smvv8"]
+[ext_resource type="PackedScene" uid="uid://cnrchsycnop0p" path="res://interactions/interactable.tscn" id="4_5kejm"]
 [ext_resource type="PackedScene" uid="uid://b2dwnxv63nuhg" path="res://objects/chest.tscn" id="4_n0b0m"]
 [ext_resource type="PackedScene" uid="uid://cxl6irm8nddki" path="res://objects/bed.tscn" id="5_2i5ty"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3n7cs"]
 
 [node name="GameLevel" type="Node2D"]
 y_sort_enabled = true
@@ -36,9 +40,27 @@ tile_set = ExtResource("2_d65c1")
 metadata/_edit_lock_ = true
 
 [node name="HouseInterior" type="TileMapLayer" parent="Environment"]
-tile_map_data = PackedByteArray("AAAbAA4ABgADAAIAAAAcAA4ABgABAAIAAAAeAA4ABgABAAIAAAAfAA4ABgADAAIAAAAgAA4ABgABAAIAAAAbAAkABgABAAAAAAAcAAkABgABAAAAAAAdAAkABgABAAAAAAAeAAkABgABAAAAAAAfAAkABgABAAAAAAAZAAoABgAAAAEAAAAZAAsABgAAAAEAAAAZAAwABgAAAAEAAAAZAA0ABgAAAAEAAAAZAA4ABgAAAAIAAAAZAAkABgAAAAAAAAAaAAkABgABAAAAAAAaAA4ABgABAAIAAAAhAAkABgACAAAAAAAhAAoABgACAAEAAAAhAAsABgACAAEAAAAhAAwABgACAAEAAAAhAA0ABgACAAEAAAAhAA4ABgACAAIAAAAgAAkABgABAAAAAAAdAA4ACAAAAAEAAAA=")
+tile_map_data = PackedByteArray("AAAbAA4ABgADAAIAAAAcAA4ABgABAAIAAAAeAA4ABgABAAIAAAAfAA4ABgADAAIAAAAgAA4ABgABAAIAAAAbAAkABgABAAAAAAAcAAkABgABAAAAAAAdAAkABgABAAAAAAAeAAkABgABAAAAAAAfAAkABgABAAAAAAAZAAoABgAAAAEAAAAZAAsABgAAAAEAAAAZAAwABgAAAAEAAAAZAA0ABgAAAAEAAAAZAA4ABgAAAAIAAAAZAAkABgAAAAAAAAAaAAkABgABAAAAAAAaAA4ABgABAAIAAAAhAAkABgACAAAAAAAhAAoABgACAAEAAAAhAAsABgACAAEAAAAhAAwABgACAAEAAAAhAA0ABgACAAEAAAAhAA4ABgACAAIAAAAgAAkABgABAAAAAAA=")
 tile_set = ExtResource("2_d65c1")
 metadata/_edit_lock_ = true
+
+[node name="HouseDoor" type="TileMapLayer" parent="Environment"]
+tile_map_data = PackedByteArray("AAAdAA4ACAAAAAEAAAA=")
+tile_set = ExtResource("2_d65c1")
+script = ExtResource("3_smvv8")
+metadata/_edit_lock_ = true
+
+[node name="Interactable" parent="Environment/HouseDoor" instance=ExtResource("4_5kejm")]
+interact_name = "Open/close door"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Environment/HouseDoor/Interactable"]
+position = Vector2(472, 232)
+shape = SubResource("RectangleShape2D_3n7cs")
+
+[node name="HouseDoorOpen" type="TileMapLayer" parent="Environment"]
+visible = false
+tile_map_data = PackedByteArray("AAAdAA4ACAAAAAIAAAA=")
+tile_set = ExtResource("2_d65c1")
 
 [node name="HouseRoof" type="TileMapLayer" parent="Environment"]
 z_index = 10
