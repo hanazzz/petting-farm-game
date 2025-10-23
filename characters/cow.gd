@@ -1,6 +1,8 @@
 extends CharacterBody2D
 
 enum COW_STATE { IDLE, WALK }
+# Get referemce interactable node
+@onready var interactable: Area2D = $Interactable
 
 # Set cow's move speed
 @export var move_speed : float = 20
@@ -17,6 +19,8 @@ enum COW_STATE { IDLE, WALK }
 @onready var sprite: Sprite2D = $Sprite2D
 # Get access to Timer node
 @onready var timer: Timer = $Timer
+# Get access to animated heart node
+const HEART = preload("uid://g6udn3jvc88m")
 
 # Set initial move direction
 var move_direction : Vector2 = Vector2.ZERO
@@ -25,7 +29,14 @@ var current_state : COW_STATE = COW_STATE.IDLE
 
 func _ready() -> void:
 	pick_new_state()
-	
+	# Set cow's interaction function
+	interactable.interact = _on_interact
+	#$Interactable.interact
+
+
+func _on_interact():
+	print("yay! you pet the cow!")
+
 
 func _physics_process(delta: float) -> void:
 	# Move only if cow state is walk
