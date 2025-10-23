@@ -23,21 +23,20 @@ debug_color = Color(0.36078432, 0.6156863, 0.19607843, 0.3137255)
 
 [node name="InteractLabel" type="Label" parent="."]
 z_index = 10
-anchors_preset = 8
+anchors_preset = 7
 anchor_left = 0.5
-anchor_top = 0.5
+anchor_top = 1.0
 anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -52.5
-offset_top = -38.0
-offset_right = 52.5
-offset_bottom = -15.0
+anchor_bottom = 1.0
+offset_left = -34.0
+offset_top = -26.0
+offset_right = 34.0
+offset_bottom = -10.0
 grow_horizontal = 2
-grow_vertical = 2
+grow_vertical = 0
 text = "[E] to interact"
 label_settings = SubResource("LabelSettings_sil8h")
 horizontal_alignment = 1
-vertical_alignment = 1
 
 [connection signal="area_entered" from="InteractRange" to="." method="_on_interact_range_area_entered"]
 [connection signal="area_exited" from="InteractRange" to="." method="_on_interact_range_area_exited"]

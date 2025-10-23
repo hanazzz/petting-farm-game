@@ -36,7 +36,7 @@ tile_set = ExtResource("2_d65c1")
 metadata/_edit_lock_ = true
 
 [node name="HouseInterior" type="TileMapLayer" parent="Environment"]
-tile_map_data = PackedByteArray("AAAbAA4ABgADAAIAAAAcAA4ABgABAAIAAAAdAA4ACAAAAAEAAAAeAA4ABgABAAIAAAAfAA4ABgADAAIAAAAgAA4ABgABAAIAAAAbAAkABgABAAAAAAAcAAkABgABAAAAAAAdAAkABgABAAAAAAAeAAkABgABAAAAAAAfAAkABgABAAAAAAAZAAoABgAAAAEAAAAZAAsABgAAAAEAAAAZAAwABgAAAAEAAAAZAA0ABgAAAAEAAAAZAA4ABgAAAAIAAAAZAAkABgAAAAAAAAAaAAkABgABAAAAAAAaAA4ABgABAAIAAAAhAAkABgACAAAAAAAhAAoABgACAAEAAAAhAAsABgACAAEAAAAhAAwABgACAAEAAAAhAA0ABgACAAEAAAAhAA4ABgACAAIAAAAgAAkABgABAAAAAAA=")
+tile_map_data = PackedByteArray("AAAbAA4ABgADAAIAAAAcAA4ABgABAAIAAAAeAA4ABgABAAIAAAAfAA4ABgADAAIAAAAgAA4ABgABAAIAAAAbAAkABgABAAAAAAAcAAkABgABAAAAAAAdAAkABgABAAAAAAAeAAkABgABAAAAAAAfAAkABgABAAAAAAAZAAoABgAAAAEAAAAZAAsABgAAAAEAAAAZAAwABgAAAAEAAAAZAA0ABgAAAAEAAAAZAA4ABgAAAAIAAAAZAAkABgAAAAAAAAAaAAkABgABAAAAAAAaAA4ABgABAAIAAAAhAAkABgACAAAAAAAhAAoABgACAAEAAAAhAAsABgACAAEAAAAhAAwABgACAAEAAAAhAA0ABgACAAEAAAAhAA4ABgACAAIAAAAgAAkABgABAAAAAAAdAA4ACAAAAAEAAAA=")
 tile_set = ExtResource("2_d65c1")
 metadata/_edit_lock_ = true
 
@@ -68,16 +68,19 @@ position = Vector2(436, 292)
 y_sort_enabled = true
 
 [node name="Cow" parent="CowsGroup" instance=ExtResource("3_d65c1")]
-position = Vector2(270, 94)
+position = Vector2(84, 177)
 
 [node name="Cow2" parent="CowsGroup" instance=ExtResource("3_d65c1")]
-position = Vector2(369, 109)
+position = Vector2(204, 92)
 
 [node name="Cow3" parent="CowsGroup" instance=ExtResource("3_d65c1")]
-position = Vector2(82, 189)
+position = Vector2(369, 121)
 
 [node name="Cow4" parent="CowsGroup" instance=ExtResource("3_d65c1")]
-position = Vector2(188, 108)
+position = Vector2(281, 276)
+
+[node name="Cow5" parent="CowsGroup" instance=ExtResource("3_d65c1")]
+position = Vector2(84, 92)
 
 [node name="Bed" parent="." instance=ExtResource("5_2i5ty")]
 position = Vector2(430, 165)

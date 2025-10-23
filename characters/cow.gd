@@ -30,12 +30,13 @@ var current_state : COW_STATE = COW_STATE.IDLE
 func _ready() -> void:
 	pick_new_state()
 	# Set cow's interaction function
-	interactable.interact = _on_interact
-	#$Interactable.interact
+	$Interactable.interact = _on_interact
+	# Set idle and walk timers
+	set_timers()
 
 
 func _on_interact():
-	print("yay! you pet the cow!")
+	# Show heart above cow
 	heart.show()
 
 
@@ -87,6 +88,14 @@ func pick_new_state():
 		$Interactable.is_interactable = true
 		timer.start(idle_time)
 
+
 # When timer for current state ends, pick new state
 func _on_timer_timeout() -> void:
 	pick_new_state()
+
+
+# Randomly select times for idle and walk time
+func set_timers():
+	idle_time = randf_range(4,8)
+	# Set duration of time for walk state
+	walk_time = randf_range(1,2)
