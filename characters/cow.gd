@@ -38,6 +38,8 @@ func _ready() -> void:
 func _on_interact():
 	# Show heart above cow
 	heart.show()
+	# Make cow unavailable for interaction
+	$Interactable.is_interactable = false
 
 
 func _physics_process(delta: float) -> void:
