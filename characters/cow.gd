@@ -81,7 +81,6 @@ func select_new_direction():
 # Switch state between idle and walking
 func pick_new_state():
 	#var cow_stats = str(name,"walk: ", "idle: ",idle_time)
-	print(move_speed)
 	# If idling, switch to walking state and select  direction
 	if (current_state == COW_STATE.IDLE):
 		current_state = COW_STATE.WALK

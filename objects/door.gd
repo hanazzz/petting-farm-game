@@ -40,16 +40,17 @@ func open_door() -> void:
 	house_roof.hide()
 	# Play opening animation
 	$AnimatedSprite2D.play("opening")
-	# Disable collision layer in middle of door
-	# (So player can pass through)
-	$ClosedCollisionShape2D.set_disabled(true)
 	# Update door state
 	is_door_closed = false
 	# Update door interaction name
 	$Interactable.interact_name = "Close door"
 	
-	# Wait until animation finishes before re-enabling door interaction
+	# Wait until animation finishes before
+	# letting player through and re-enabling door interaction
 	await $AnimatedSprite2D.animation_finished
+	# Disable collision layer in middle of door
+	# (So player can pass through)
+	$ClosedCollisionShape2D.set_disabled(true)
 	$Interactable.is_interactable = true
 	
 
