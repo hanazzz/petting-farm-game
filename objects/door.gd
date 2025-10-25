@@ -27,7 +27,6 @@ func _on_interact():
 		$AnimatedSprite2D.play("opening")
 		# Disable collision layer
 		$ClosedCollisionShape2D.set_disabled(true)
-		print($ClosedCollisionShape2D.disabled)
 		# Update door state
 		is_door_closed = false
 		# Update door interaction name
@@ -38,7 +37,6 @@ func _on_interact():
 		$AnimatedSprite2D.play("closing")
 		# Enable collision layer
 		$ClosedCollisionShape2D.set_disabled(false)
-		print($ClosedCollisionShape2D.disabled)
 		# Update door state
 		is_door_closed = true
 		# Show roof

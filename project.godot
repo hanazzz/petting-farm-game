@@ -19,7 +19,8 @@ config/icon="res://icon.svg"
 
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
-window/stretch/scale=3.0
+window/stretch/scale=2.5
+window/name="Petting Farm Sim"
 
 [gui]
 

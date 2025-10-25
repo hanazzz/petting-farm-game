@@ -6,7 +6,10 @@ extends Node
 @onready var timer: Timer = %Timer
 # Access timer label
 @onready var timer_label: Label = %TimerLabel
-@onready var start_panel: Node = $"../UI/StartPanel"
+# Access game over screen
+@onready var game_over: CanvasLayer = $"../GameOver"
+@onready var game_summary: Label = $"../GameOver/GameSummary"
+
 
 # Start player with zero points
 var player_points : int = 0
@@ -26,8 +29,13 @@ func add_points(points: int):
 	%PointsLabel.text = "Points: " + str(player_points)
 
 
-func _on_start_button_pressed() -> void:
-	# Hide start overlay screen
-	start_panel.queue_free()
-	# Start timer
-	timer.start()
+# End game when timer ends
+func _on_timer_timeout() -> void:
+	game_over.show()
+	get_tree().paused = true
+	game_summary.text = str("You scored ", player_points, " points!")
+
+
+func _on_main_menu_button_pressed() -> void:
+	get_tree().paused = false
+	get_tree().change_scene_to_file("res://levels/main_menu.tscn")
