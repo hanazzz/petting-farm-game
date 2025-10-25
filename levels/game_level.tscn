@@ -1,17 +1,29 @@
-[gd_scene load_steps=7 format=4 uid="uid://0xspdiqn7cxi"]
+[gd_scene load_steps=12 format=4 uid="uid://0xspdiqn7cxi"]
 
 [ext_resource type="PackedScene" uid="uid://b8tth873cnky5" path="res://characters/player_cat.tscn" id="1_qc6i3"]
 [ext_resource type="TileSet" uid="uid://c67gi3et33klt" path="res://assets/tilesets/tilesets.tres" id="2_d65c1"]
 [ext_resource type="PackedScene" uid="uid://c223atvlg6ry6" path="res://characters/cow.tscn" id="3_d65c1"]
 [ext_resource type="PackedScene" uid="uid://b2dwnxv63nuhg" path="res://objects/chest.tscn" id="4_n0b0m"]
+[ext_resource type="Texture2D" uid="uid://bfbfap2jvqjd2" path="res://assets/Sprite sheet for Basic Pack.png" id="4_p4sme"]
 [ext_resource type="PackedScene" uid="uid://cxl6irm8nddki" path="res://objects/bed.tscn" id="5_2i5ty"]
 [ext_resource type="PackedScene" uid="uid://cx2lo4jxt0ayf" path="res://objects/door.tscn" id="5_5kejm"]
+[ext_resource type="FontFile" uid="uid://clfjy3ejsvr6b" path="res://assets/m6x11.ttf" id="5_x6325"]
+[ext_resource type="Script" uid="uid://dhoj65rwt0qmd" path="res://levels/game_manager.gd" id="7_smvv8"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jkcp4"]
+atlas = ExtResource("4_p4sme")
+region = Rect2(275, 178, 90, 27)
+
+[sub_resource type="LabelSettings" id="LabelSettings_smvv8"]
+font = ExtResource("5_x6325")
+font_color = Color(0.5647059, 0.38431373, 0.3647059, 1)
 
 [node name="GameLevel" type="Node2D"]
 y_sort_enabled = true
 
-[node name="PlayerCat" parent="." instance=ExtResource("1_qc6i3")]
-position = Vector2(228, 189)
+[node name="GameManager" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("7_smvv8")
 
 [node name="Environment" type="Node2D" parent="."]
 z_index = -5
@@ -51,6 +63,46 @@ tile_map_data = PackedByteArray("AAAZAAgABQACAAQAADAZAAkABQACAAMAADAZAAoABQACAAM
 tile_set = ExtResource("2_d65c1")
 metadata/_edit_lock_ = true
 
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="TextureRect" type="TextureRect" parent="UI"]
+offset_left = 4.0
+offset_top = 3.0
+offset_right = 94.0
+offset_bottom = 30.0
+texture = SubResource("AtlasTexture_jkcp4")
+
+[node name="PointsLabel" type="Label" parent="UI/TextureRect"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -26.5
+offset_top = -7.0
+offset_right = 26.5
+offset_bottom = 7.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Points: 0"
+label_settings = SubResource("LabelSettings_smvv8")
+vertical_alignment = 1
+
+[node name="PointsPanel" type="Panel" parent="UI"]
+visible = false
+offset_left = 5.0
+offset_top = 5.0
+offset_right = 197.6751
+offset_bottom = 26.493923
+
+[node name="Bed" parent="." instance=ExtResource("5_2i5ty")]
+position = Vector2(430, 165)
+
+[node name="PlayerCat" parent="." instance=ExtResource("1_qc6i3")]
+position = Vector2(228, 189)
+
 [node name="ChestGroup" type="Node2D" parent="."]
 y_sort_enabled = true
 
@@ -86,6 +138,3 @@ position = Vector2(281, 276)
 
 [node name="Cow5" parent="CowsGroup" instance=ExtResource("3_d65c1")]
 position = Vector2(84, 92)
-
-[node name="Bed" parent="." instance=ExtResource("5_2i5ty")]
-position = Vector2(430, 165)

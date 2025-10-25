@@ -1,8 +1,10 @@
 extends CharacterBody2D
 
 enum COW_STATE { IDLE, WALK }
-# Get referemce interactable node
+# Access Interactable node
 @onready var interactable: Area2D = $Interactable
+# Acces GameManager
+@onready var game_manager: Node = %GameManager
 
 # Set cow's move speed
 @export var move_speed : float = 20
@@ -26,6 +28,8 @@ enum COW_STATE { IDLE, WALK }
 var move_direction : Vector2 = Vector2.ZERO
 # Set initial default state
 var current_state : COW_STATE = COW_STATE.IDLE
+# Set cow's point value
+var point_value = 1
 
 func _ready() -> void:
 	pick_new_state()
@@ -36,10 +40,17 @@ func _ready() -> void:
 
 
 func _on_interact():
-	# Show heart above cow
-	heart.show()
-	# Make cow unavailable for interaction
-	$Interactable.is_interactable = false
+	# If cow is available for interaction, execute interaction:
+	if $Interactable.is_interactable == true:
+		# Show heart above cow
+		heart.show()
+		# Make cow unavailable for interaction
+		$Interactable.is_interactable = false
+		# Increase player's points
+		%GameManager.add_points(point_value)
+	# If not available for interaction, do nothing
+	else:
+		return
 
 
 func _physics_process(delta: float) -> void:
