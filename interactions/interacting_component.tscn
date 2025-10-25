@@ -1,11 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://dt5uqipxt705x"]
+[gd_scene load_steps=5 format=3 uid="uid://dt5uqipxt705x"]
 
 [ext_resource type="Script" uid="uid://bn361seehfb7q" path="res://interactions/interacting_component.gd" id="1_0w7yd"]
+[ext_resource type="FontFile" uid="uid://df1xgtjny18pc" path="res://assets/dysin4mation.ttf" id="2_prdg1"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_sil8h"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_sil8h"]
-font_size = 8
+font = ExtResource("2_prdg1")
+font_size = 12
 outline_size = 2
 outline_color = Color(0.099985994, 0.099985994, 0.099985994, 1)
 
