@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=4 uid="uid://0xspdiqn7cxi"]
+[gd_scene load_steps=19 format=4 uid="uid://0xspdiqn7cxi"]
 
 [ext_resource type="PackedScene" uid="uid://b8tth873cnky5" path="res://characters/player_cat.tscn" id="1_qc6i3"]
 [ext_resource type="TileSet" uid="uid://c67gi3et33klt" path="res://assets/tilesets/tilesets.tres" id="2_d65c1"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://cxl6irm8nddki" path="res://objects/bed.tscn" id="5_2i5ty"]
 [ext_resource type="PackedScene" uid="uid://cx2lo4jxt0ayf" path="res://objects/door.tscn" id="5_5kejm"]
 [ext_resource type="FontFile" uid="uid://clfjy3ejsvr6b" path="res://assets/m6x11.ttf" id="5_x6325"]
+[ext_resource type="Texture2D" uid="uid://5l5lu1g4hscs" path="res://assets/Square Buttons 26x19.png" id="6_p4sme"]
 [ext_resource type="Script" uid="uid://dhoj65rwt0qmd" path="res://levels/game_manager.gd" id="7_smvv8"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jkcp4"]
@@ -18,12 +19,38 @@ region = Rect2(275, 178, 90, 27)
 font = ExtResource("5_x6325")
 font_color = Color(0.5647059, 0.38431373, 0.3647059, 1)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_x6325"]
+atlas = ExtResource("6_p4sme")
+region = Rect2(11, 70, 26, 19)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_egnn0"]
+texture = SubResource("AtlasTexture_x6325")
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_p4sme"]
+load_path = "res://.godot/imported/Square Buttons 26x19.png-49f8429e3305cf5583fb51cc797f7a53.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_egnn0"]
+atlas = SubResource("CompressedTexture2D_p4sme")
+region = Rect2(59, 71, 26, 18)
+margin = Rect2(0, 1, 0, 0)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_jkcp4"]
+texture = SubResource("AtlasTexture_egnn0")
+region_rect = Rect2(0, 0, 26, 19)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_p4sme"]
+
 [node name="GameLevel" type="Node2D"]
 y_sort_enabled = true
 
 [node name="GameManager" type="Node" parent="."]
 unique_name_in_owner = true
 script = ExtResource("7_smvv8")
+
+[node name="Timer" type="Timer" parent="."]
+unique_name_in_owner = true
+wait_time = 20.0
+one_shot = true
 
 [node name="Environment" type="Node2D" parent="."]
 z_index = -5
@@ -115,12 +142,43 @@ offset_right = 26.5
 offset_bottom = 7.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "Time left: 00:20"
+text = "Time left: 20"
 label_settings = SubResource("LabelSettings_smvv8")
 vertical_alignment = 1
 
-[node name="Bed" parent="." instance=ExtResource("5_2i5ty")]
-position = Vector2(430, 165)
+[node name="StartPanel" type="Node" parent="UI"]
+
+[node name="StartBackground" type="ColorRect" parent="UI/StartPanel"]
+offset_right = 1152.0
+offset_bottom = 640.0
+size_flags_vertical = 10
+color = Color(0.24115586, 0.24115622, 0.2411559, 0.40784314)
+metadata/_edit_use_anchors_ = true
+
+[node name="StartButton" type="Button" parent="UI/StartPanel"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -86.25
+offset_top = -34.5
+offset_right = 86.25
+offset_bottom = 34.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.5647059, 0.38431373, 0.3647059, 1)
+theme_override_colors/font_focus_color = Color(0.6666667, 0.4745098, 0.3529412, 1)
+theme_override_colors/font_pressed_color = Color(0.9098039, 0.8117647, 0.6509804, 1)
+theme_override_colors/font_hover_color = Color(0.7137255, 0.5372549, 0.38039216, 1)
+theme_override_fonts/font = ExtResource("5_x6325")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxTexture_egnn0")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_jkcp4")
+theme_override_styles/hover = SubResource("StyleBoxTexture_egnn0")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_p4sme")
+text = "START"
+metadata/_edit_use_anchors_ = true
 
 [node name="PlayerCat" parent="." instance=ExtResource("1_qc6i3")]
 position = Vector2(228, 189)
@@ -161,7 +219,9 @@ position = Vector2(281, 276)
 [node name="Cow5" parent="CowsGroup" instance=ExtResource("3_d65c1")]
 position = Vector2(84, 92)
 
-[node name="Timer" type="Timer" parent="."]
-unique_name_in_owner = true
-wait_time = 15.0
-autostart = true
+[node name="House" type="Node2D" parent="."]
+
+[node name="Bed" parent="House" instance=ExtResource("5_2i5ty")]
+position = Vector2(430, 165)
+
+[connection signal="pressed" from="UI/StartPanel/StartButton" to="GameManager" method="_on_start_button_pressed"]

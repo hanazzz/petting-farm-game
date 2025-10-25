@@ -6,6 +6,7 @@ extends Node
 @onready var timer: Timer = %Timer
 # Access timer label
 @onready var timer_label: Label = %TimerLabel
+@onready var start_panel: Node = $"../UI/StartPanel"
 
 # Start player with zero points
 var player_points : int = 0
@@ -23,3 +24,10 @@ func add_points(points: int):
 	player_points += points
 	# Update points label
 	%PointsLabel.text = "Points: " + str(player_points)
+
+
+func _on_start_button_pressed() -> void:
+	# Hide start overlay screen
+	start_panel.queue_free()
+	# Start timer
+	timer.start()
