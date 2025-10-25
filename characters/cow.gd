@@ -6,12 +6,12 @@ enum COW_STATE { IDLE, WALK }
 # Acces GameManager
 @onready var game_manager: Node = %GameManager
 
-# Set cow's move speed
-@export var move_speed : float = 20
-# Set length of time for idle state
-@export var idle_time : float = 5
-# Set duration of time for walk state
-@export var walk_time : float = 2
+# Set random move speed
+@export var move_speed : float = randf_range(8,20)
+# Set random duration for idle state
+@export var idle_time : float = randf_range(4,10)
+# Set random duration for walk state
+@export var walk_time : float = randf_range(1,4)
 
 # Get access to AnimationTree
 @onready var animation_tree: AnimationTree = $AnimationTree
@@ -35,8 +35,6 @@ func _ready() -> void:
 	pick_new_state()
 	# Set cow's interaction function
 	$Interactable.interact = _on_interact
-	# Set idle and walk timers
-	set_timers()
 
 
 func _on_interact():
@@ -82,6 +80,8 @@ func select_new_direction():
 
 # Switch state between idle and walking
 func pick_new_state():
+	#var cow_stats = str(name,"walk: ", "idle: ",idle_time)
+	print(move_speed)
 	# If idling, switch to walking state and select  direction
 	if (current_state == COW_STATE.IDLE):
 		current_state = COW_STATE.WALK
@@ -105,10 +105,3 @@ func pick_new_state():
 # When timer for current state ends, pick new state
 func _on_timer_timeout() -> void:
 	pick_new_state()
-
-
-# Randomly select times for idle and walk time
-func set_timers():
-	idle_time = randf_range(4,8)
-	# Set duration of time for walk state
-	walk_time = randf_range(1,2)
