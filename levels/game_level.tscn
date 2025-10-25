@@ -65,14 +65,14 @@ metadata/_edit_lock_ = true
 
 [node name="UI" type="CanvasLayer" parent="."]
 
-[node name="TextureRect" type="TextureRect" parent="UI"]
+[node name="PointsPanel" type="TextureRect" parent="UI"]
 offset_left = 4.0
-offset_top = 3.0
+offset_top = 4.0
 offset_right = 94.0
-offset_bottom = 30.0
+offset_bottom = 31.0
 texture = SubResource("AtlasTexture_jkcp4")
 
-[node name="PointsLabel" type="Label" parent="UI/TextureRect"]
+[node name="PointsLabel" type="Label" parent="UI/PointsPanel"]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 8
@@ -90,12 +90,34 @@ text = "Points: 0"
 label_settings = SubResource("LabelSettings_smvv8")
 vertical_alignment = 1
 
-[node name="PointsPanel" type="Panel" parent="UI"]
-visible = false
-offset_left = 5.0
-offset_top = 5.0
-offset_right = 197.6751
-offset_bottom = 26.493923
+[node name="TimerPanel" type="TextureRect" parent="UI"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -94.0
+offset_top = 4.0
+offset_right = -4.0
+offset_bottom = 31.0
+grow_horizontal = 0
+texture = SubResource("AtlasTexture_jkcp4")
+
+[node name="TimerLabel" type="Label" parent="UI/TimerPanel"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -26.5
+offset_top = -7.0
+offset_right = 26.5
+offset_bottom = 7.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Time left: 00:20"
+label_settings = SubResource("LabelSettings_smvv8")
+vertical_alignment = 1
 
 [node name="Bed" parent="." instance=ExtResource("5_2i5ty")]
 position = Vector2(430, 165)
@@ -138,3 +160,8 @@ position = Vector2(281, 276)
 
 [node name="Cow5" parent="CowsGroup" instance=ExtResource("3_d65c1")]
 position = Vector2(84, 92)
+
+[node name="Timer" type="Timer" parent="."]
+unique_name_in_owner = true
+wait_time = 15.0
+autostart = true
