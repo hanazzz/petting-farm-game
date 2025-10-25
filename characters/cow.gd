@@ -51,7 +51,7 @@ func _on_interact():
 		return
 
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	# Move only if cow state is walk
 	if (current_state == COW_STATE.WALK):
 		velocity = move_direction * move_speed
