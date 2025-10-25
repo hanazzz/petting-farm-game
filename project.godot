@@ -10,8 +10,8 @@ config_version=5
 
 [application]
 
-config/name="godot-4-crash-course"
-run/main_scene="uid://0xspdiqn7cxi"
+config/name="Petting Farm Sim"
+run/main_scene="uid://dogo1cs53owej"
 config/features=PackedStringArray("4.5", "Mobile")
 config/icon="res://icon.svg"
 

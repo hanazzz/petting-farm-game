@@ -12,7 +12,7 @@ extends Node
 var player_points : int = 0
 
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	# Get amount of time left and format it
 	var time_left = str(int(%Timer.time_left)).pad_zeros(2)
 	# Update timer label
