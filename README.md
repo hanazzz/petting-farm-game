@@ -2,6 +2,11 @@
 
 A mellow 2D top-down petting farm game.
 
+## Demo
+![Demo GIF: Petting cows](https://github.com/user-attachments/assets/3c5955d8-9346-4c5a-ac58-86a0d0896b0c)  
+![Demo GIF: Entering the house](https://github.com/user-attachments/assets/e78084cb-2660-45d1-a92f-fcff55408dd1)  
+
+
 ## Description
 
 I wanted to learn more about animation in Godot and controlling the movement of other characters. I used [this tutorial](https://www.youtube.com/watch?v=Luf2Kr5s3BM) to explore those topics, and then I continued working on the project to cement my knowledge and explore other things. Most notably, after finishing the tutorial I added player interaction (with cows and the house door), which was completely brand new to me in Godot. I did a lot of research into ways to approach this, and while it took me a while to initially set it up, it left me with something that was modular and easy to implement with various objects. The interaction system is now something I can use to add more to the game and increase the complexity.
