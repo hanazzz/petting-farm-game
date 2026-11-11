@@ -1,9 +1,23 @@
 # Petting Farm Sim 🐮
 
-A mellow 2D top-down petting farm game.
+A mellow 2D top-down petting farm game created in November 2025.
+
+## Table of Contents
+- [Demo](#demo)
+- [Description](#description)
+- [Features](#features)
+- [Possible Future Features/Improvements](#possible-future-featuresimprovements)
+- [Known Bugs](#known-bugs)
+- [Resources](#resources)
+
 
 ## Demo
+🕹️ [Try the live demo](https://hanazzz.itch.io/petting-farm-sim)  
+
+*Starting the game and petting cows*  
 ![Demo GIF: Petting cows](https://github.com/user-attachments/assets/3c5955d8-9346-4c5a-ac58-86a0d0896b0c)  
+
+*Entering and exiting the hosue*  
 ![Demo GIF: Entering the house](https://github.com/user-attachments/assets/e78084cb-2660-45d1-a92f-fcff55408dd1)  
 
 
